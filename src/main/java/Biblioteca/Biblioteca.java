@@ -12,6 +12,7 @@ public class Biblioteca {
         this.clientes = new ArrayList<>();
     }
 
+
     public void altaPublicacion() {
         Scanner sc = new Scanner(System.in);
         System.out.println("Elija el tipo de publicación que desea dar de alta:");
