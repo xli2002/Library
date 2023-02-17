@@ -1,5 +1,5 @@
 package Biblioteca;
 
 public enum Periodicidad {
-    SEMANAL,MENSUAL,TRIMESTRAL;
+    SEMANAL,MENSUAL,TRIMESTRAL
 }

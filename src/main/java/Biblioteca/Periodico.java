@@ -6,11 +6,11 @@ import java.util.Scanner;
 
 public class Periodico extends Publicacion {
     private String nombre;
-    private String diaPublicacion;
+    private Date diaPublicacion;
 
     private static ArrayList<Publicacion> publicaciones = new ArrayList<>();
 
-    public Periodico(String editorial, int paginas, TipoPagina tipoPagina, String nombre, String diaPublicacion) {
+    public Periodico(String editorial, int paginas, TipoPagina tipoPagina, String nombre, Date diaPublicacion) {
         super(editorial, paginas, tipoPagina);
         this.nombre = nombre;
         this.diaPublicacion = diaPublicacion;
@@ -23,14 +23,6 @@ public class Periodico extends Publicacion {
         this.nombre = nombre;
     }
 
-    public String getDiaPublicacion() {
-        return diaPublicacion;
-    }
-
-    public void setDiaPublicacion(String diaPublicacion) {
-        this.diaPublicacion = diaPublicacion;
-    }
-
     public static void altaPeriodico() {
         Scanner scanner = new Scanner(System.in);
 
@@ -41,10 +33,10 @@ public class Periodico extends Publicacion {
 
         System.out.println("Ingrese el nombre del periodico:");
         String nombre = scanner.next();
-        System.out.println("Ingrese el dia del periodico:");
+        System.out.println("Ingrese la fecha de publicacion del periodico (en formato dd/MM/yyyy):");
         String dia = scanner.next();
 
-        Publicacion nuevoPeriodico = new Periodico(editorial, paginas, tipoPagina(), nombre, dia);
+        Publicacion nuevoPeriodico = new Periodico(editorial, paginas, tipoPagina(), nombre, new Date(dia));
         publicaciones.add(nuevoPeriodico);
         System.out.println("La publicacion se ha dado de alta correctamente.");
     }
