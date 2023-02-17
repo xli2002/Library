@@ -13,7 +13,7 @@ public class Input {
         Scanner sc = new Scanner(System.in);
         System.out.println(message);
         while (!sc.hasNextInt()) {
-            System.err.println("Please, enter an integer");
+            System.err.println("Por favor, ingrese un numero.");
             sc.next();
         }
         return sc.nextInt();

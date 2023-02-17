@@ -1,16 +1,8 @@
 package Biblioteca;
 
-import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Biblioteca {
-    private ArrayList<Publicacion> publicaciones;
-    private ArrayList<Cliente> clientes;
-
-    public Biblioteca() {
-        this.publicaciones = new ArrayList<>();
-        this.clientes = new ArrayList<>();
-    }
 
     public void altaPublicacion() {
         Scanner sc = new Scanner(System.in);
@@ -20,73 +12,59 @@ public class Biblioteca {
         System.out.println("3. Periódico");
         int opcion = sc.nextInt();
 
-        Publicacion nuevaPublicacion = null;
-
-        switch(opcion) {
+        switch (opcion) {
             case 1:
-                nuevaPublicacion = new Libro("nose",5,TipoPagina.COLOR,"Juan","Los tomates","dasdasdasd",3,2);
+                Libro.altaLibro();
+                Libro.mostrarLibro();
                 break;
             case 2:
-                nuevaPublicacion = new Revista("nose",5,TipoPagina.COLOR,"Pedro","Fantasia","Mensual",);
+                Revista.altaRevista();
+                Revista.mostrarRevista();
                 break;
             case 3:
-                nuevaPublicacion = new Periodico("nose",5,TipoPagina.COLOR,"Toni","2 febrero");
+                Periodico.altaPeriodico();
+                Periodico.mostrarPeriodico();
                 break;
             default:
-                System.out.println("Opción inválida. Intente de nuevo.");
-                return;
-        }
-
-        publicaciones.add(nuevaPublicacion);
-        System.out.println("La publicación se ha dado de alta correctamente.");
-    }
-
-    public void bajaPublicacion(Publicacion publicacion) {
-        publicaciones.remove(publicacion);
-        System.out.println("La publicación se ha dado de baja correctamente.");
-    }
-
-    public void prestarLibro(Libro libro, Cliente cliente) {
-        if (libro.getCantidadEjemplares() > 0) {
-            cliente.agregarLibroPrestado(libro);
-            libro.prestar();
-            System.out.println("El libro se ha prestado correctamente.");
-        } else {
-            System.out.println("Lo sentimos, no hay ejemplares disponibles de este libro.");
+                System.out.println("Opción inválida");
+                break;
         }
     }
 
-    public void devolverLibro(Libro libro, Cliente cliente) {
-        if (cliente.getLibrosPrestados()) {
-            cliente.eliminarLibroPrestado(libro);
-            libro.devolver();
-            System.out.println("El libro se ha devuelto correctamente.");
-        } else {
-            System.out.println("El cliente no tiene prestado este libro.");
+    public void bajaPublicacion() {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Elija el tipo de publicación que desea dar de baja:");
+        System.out.println("1. Libro");
+        System.out.println("2. Revista");
+        System.out.println("3. Periódico");
+        int opcion = sc.nextInt();
+
+        switch (opcion) {
+            case 1:
+                Libro.mostrarLibro();
+                Libro.bajaLibro();
+                Libro.mostrarLibro();
+                break;
+            case 2:
+                Revista.mostrarRevista();
+                Revista.bajaRevista();
+                Revista.mostrarRevista();
+                break;
+            case 3:
+                Periodico.mostrarPeriodico();
+                Periodico.bajaPeriodico();
+                Periodico.mostrarPeriodico();
+                break;
+            default:
+                System.out.println("Opción inválida");
+                break;
         }
     }
-
-    public void altaCliente(Cliente cliente) {
-        clientes.add(cliente);
-        System.out.println("El cliente se ha dado de alta correctamente.");
-    }
-
-    public void bajaCliente(Cliente cliente) {
-        clientes.remove(cliente);
-        System.out.println("El cliente se ha dado de baja correctamente.");
-    }
-
-    public void modificarCliente(Cliente cliente, String nombre,String dni) {
-        cliente.setNombre(nombre);
-        cliente.setDni(dni);
-        System.out.println("Los datos del cliente se han modificado correctamente.");
-    }
-
 
     public static void main(String[] args) {
         Biblioteca biblioteca = new Biblioteca();
         Scanner sc = new Scanner(System.in);
-        int opcion = 0;
+        int opcion ;
         do {
             System.out.println("Menú de opciones");
             System.out.println("1. Dar de alta publicación");
@@ -103,24 +81,30 @@ public class Biblioteca {
             switch (opcion) {
                 case 1:
                     biblioteca.altaPublicacion();
+                    System.out.println();
                     break;
                 case 2:
-                    System.out.println("Dar de baja publicación");
+                    biblioteca.bajaPublicacion();
+                    System.out.println();
                     break;
                 case 3:
-                    System.out.println("Prestar libro");
-                    break;
                 case 4:
-                    System.out.println("Devolver libro");
+                    System.out.println("NO FUNCIONA");
+                    System.out.println();
                     break;
                 case 5:
-                    biblioteca.altaCliente(new Cliente(Input.getString());
+                    Cliente.altaCliente();
+                    Cliente.mostrarClientes();
                     break;
                 case 6:
-                    System.out.println("Dar de baja cliente");
+                    Cliente.mostrarClientes();
+                    Cliente.bajaCliente();
+                    Cliente.mostrarClientes();
                     break;
                 case 7:
-                    System.out.println("Modificar datos de cliente");
+                    Cliente.mostrarClientes();
+                    Cliente.modificarCliente();
+                    Cliente.mostrarClientes();
                     break;
                 case 8:
                     System.out.println("Saliendo...");
