@@ -21,38 +21,6 @@ public class Libro extends Publicacion {
         this.codigoEjemplar = codigoEjemplar;
     }
 
-    public String getAutor() {
-        return autor;
-    }
-
-    public void setAutor(String autor) {
-        this.autor = autor;
-    }
-
-    public String getTitulo() {
-        return titulo;
-    }
-
-    public void setTitulo(String titulo) {
-        this.titulo = titulo;
-    }
-
-    public String getISBN() {
-        return ISBN;
-    }
-
-    public void setISBN(String ISBN) {
-        this.ISBN = ISBN;
-    }
-
-    public int getCantidadEjemplares() {
-        return cantidadEjemplares;
-    }
-
-    public void setCantidadEjemplares(int cantidadEjemplares) {
-        this.cantidadEjemplares = cantidadEjemplares;
-    }
-
     public static void altaLibro() {
         Scanner scanner = new Scanner(System.in);
 
